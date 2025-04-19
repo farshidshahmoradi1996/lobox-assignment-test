@@ -1,0 +1,11 @@
+.container {
+  width: 200px;
+  .wrapper {
+    padding: 8px 4px;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 8px;
+    &:hover {
+      border-color: rgb(147, 147, 147);
+    }
+  }
+}
