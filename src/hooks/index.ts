@@ -1,1 +1,1 @@
-export * from './use-multi-select-outside-click';
+export * from './use-elm-outside-click';

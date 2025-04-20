@@ -1,1 +1,3 @@
-@import url(./_reset.scss);
+@use './settings/reset';
+@use './settings/colors';
+@use './settings/variables';

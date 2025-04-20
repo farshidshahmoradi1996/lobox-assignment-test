@@ -37,8 +37,6 @@ function App() {
         height: '100vh'
       }}
     >
-      <p>This is a assement test</p>
-
       <MultiSelect
         placeholder="select ..."
         options={DEFAULT_OPTIONS}

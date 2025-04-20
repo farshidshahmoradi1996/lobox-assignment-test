@@ -1,13 +1,23 @@
+@use '/src/styles/settings/colors';
+@use '/src/styles/settings/variables';
+
 .container {
-  width: 200px;
+  width: 250px;
   position: relative;
   .wrapper {
-    padding: 8px 4px;
-    border: 1px solid rgb(180, 180, 180);
-    border-radius: 8px;
+    padding: variables.$sm variables.$xs;
+    cursor: pointer;
+    border: 1px solid colors.$gray;
+    border-radius: variables.$sm;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     &:hover {
       border-color: rgb(147, 147, 147);
     }
+    &.open {
+      border-color: #8993c1;
+      box-shadow: 0 0 0 0.25rem rgba(24, 101, 217, 0.25);
+    }
+
     input {
       outline: none;
       border: none;
@@ -32,6 +42,7 @@
     overflow-y: auto;
     .option {
       padding: 8px;
+      user-select: none;
       cursor: pointer;
       &:hover {
         background-color: rgb(240, 240, 240);
