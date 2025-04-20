@@ -2,12 +2,13 @@
 @use '/src/styles/settings/variables';
 
 .container {
-  width: 250px;
+  width: 400px;
   position: relative;
   .wrapper {
-    padding: variables.$sm variables.$xs;
-    cursor: pointer;
-    border: 1px solid colors.$gray;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 variables.$xs;
+    border: 1px solid colors.$gray-1;
     border-radius: variables.$sm;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     &:hover {
@@ -19,34 +20,69 @@
     }
 
     input {
+      flex: 1;
       outline: none;
       border: none;
-      width: 100%;
+      height: 100%;
       padding: 0;
       margin: 0;
-      font-size: 14px;
+      font-size: 18px;
       cursor: pointer;
+      padding: variables.$sm 0;
+    }
+    .chips {
+      background: colors.$gray-1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      margin: variables.$xss;
+      padding: variables.$xss variables.$xss;
+      p {
+        font-size: 12px;
+        user-select: none;
+      }
+      .iconContainer {
+        margin: 2px 0 0 4px;
+        cursor: pointer;
+      }
     }
   }
   .dropdownContainer {
     position: absolute;
-    height: 200px;
+    height: 300px;
+    max-height: 300px;
     top: calc(100% + 10px);
     left: 0;
     width: 100%;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 16px;
+    padding: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     z-index: 1;
-    max-height: 200px;
     overflow-y: auto;
     .option {
-      padding: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 8px;
       user-select: none;
+      border-radius: 8px;
       cursor: pointer;
+      margin-top: 4px;
       &:hover {
-        background-color: rgb(240, 240, 240);
+        background-color: colors.$blue-1;
       }
+      &.selected {
+        background-color: colors.$blue-1;
+        color: colors.$blue-4;
+      }
+    }
+    p.addText {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 4px;
+      color: colors.$gray-3;
     }
   }
 }
