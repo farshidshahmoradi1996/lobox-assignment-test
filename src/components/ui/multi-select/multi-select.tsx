@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { MultiSelectProps } from './@types';
 import classes from './styles.module.scss';
 
@@ -13,11 +13,10 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   onChange,
   onItemAdd
 }) => {
-  const id = useId();
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  useElmOutsideClick({ active: isOpen, onOutsideClick: () => setIsOpen(false), containerId: `multi-select-${id}` });
+  const { ref: containerRef } = useElmOutsideClick({ active: isOpen, onOutsideClick: () => setIsOpen(false) });
 
   const toggleOpen = () => {
     setIsOpen((prev) => !prev);
@@ -32,11 +31,12 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   };
 
   useEffect(() => {
+    // clear input on item selected
     setInputValue('');
   }, [selectedValues]);
 
   return (
-    <div className={classes.container} id={`multi-select-${id}`}>
+    <div className={classes.container} ref={containerRef}>
       <MultiSelectWrapper
         placeholder={placeholder}
         isOpen={isOpen}

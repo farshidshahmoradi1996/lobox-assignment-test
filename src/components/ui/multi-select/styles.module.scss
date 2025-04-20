@@ -5,41 +5,51 @@
   width: 400px;
   position: relative;
   .wrapper {
+    min-height: 50px;
     display: flex;
-    flex-wrap: wrap;
-    padding: 0 variables.$xs;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: variables.$xs;
     border: 1px solid colors.$gray-1;
     border-radius: variables.$sm;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     &:hover {
-      border-color: rgb(147, 147, 147);
+      border-color: colors.$gray-2;
     }
     &.open {
-      border-color: #8993c1;
-      box-shadow: 0 0 0 0.25rem rgba(24, 101, 217, 0.25);
+      border-color: colors.$blue-4;
+      box-shadow: 0 0 0 0.25rem colors.$shadow-blue-1;
+    }
+    .selectedOptionsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .inputContainer {
+      flex: 1 1 auto;
+      input {
+        outline: none;
+        border: none;
+        height: 100%;
+
+        margin: 0;
+        font-size: variables.$font-sm;
+        cursor: pointer;
+      }
     }
 
-    input {
-      flex: 1;
-      outline: none;
-      border: none;
-      height: 100%;
-      padding: 0;
-      margin: 0;
-      font-size: 14px;
-      cursor: pointer;
-      padding: variables.$sm 0;
-    }
     .chips {
       background: colors.$gray-1;
       display: flex;
       justify-content: center;
+      cursor: default;
       align-items: center;
-      border-radius: 8px;
+      border-radius: variables.$xs;
       margin: variables.$xss;
-      padding: variables.$xss variables.$xss;
+      padding: variables.$xss variables.$xs;
       p {
-        font-size: 12px;
+        font-size: variables.$font-xs;
         user-select: none;
       }
       .iconContainer {
@@ -55,19 +65,19 @@
     top: calc(100% + 10px);
     left: 0;
     width: 100%;
-    background-color: white;
-    border-radius: 16px;
-    padding: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background-color: colors.$white;
+    border-radius: variables.$md;
+    padding: variables.$sm;
+    box-shadow: 0 2px variables.$xs colors.$shadow-dark-1;
     z-index: 1;
     overflow-y: auto;
     .option {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 8px;
+      padding: variables.$sm variables.$xs;
       user-select: none;
-      border-radius: 8px;
+      border-radius: variables.$xs;
       cursor: pointer;
       margin-top: 4px;
       color: colors.$gray-4;
@@ -80,7 +90,7 @@
       }
     }
     p.addText {
-      font-size: 12px;
+      font-size: variables.$font-xs;
       text-align: center;
       margin-top: 4px;
       color: colors.$gray-3;

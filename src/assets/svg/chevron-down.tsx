@@ -1,7 +1,7 @@
-export const ChevronDownIcon: React.FC = ({ w = 18, h = 18 }: { w?: number; h?: number }) => {
+export const ChevronDownIcon: React.FC = ({ w = 14, h = 14, c = '#ccc' }: { w?: number; h?: number; c?: string }) => {
   return (
     <svg
-      fill="#000000"
+      fill={c}
       height={h}
       width={w}
       version="1.1"

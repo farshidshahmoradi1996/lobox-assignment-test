@@ -1,22 +1,20 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 type Props = {
   active: boolean;
   onOutsideClick: () => void;
-  containerId: string;
 };
 
-export const useElmOutsideClick = ({ active, onOutsideClick, containerId }: Props) => {
+export const useElmOutsideClick = ({ active, onOutsideClick }: Props) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const handleMouseDown = useCallback(
     (event: MouseEvent) => {
-      const containerElement = document.getElementById(containerId);
+      if (!ref?.current) return;
 
-      if (!containerElement) return;
-
-      const isClickedItemSameRefElement = containerElement.contains(event.target as Node);
+      const isClickedItemSameRefElement = ref.current?.contains(event.target as Node);
       if (!isClickedItemSameRefElement) onOutsideClick();
     },
-    [containerId, onOutsideClick]
+    [ref, onOutsideClick]
   );
 
   useEffect(() => {
@@ -29,5 +27,5 @@ export const useElmOutsideClick = ({ active, onOutsideClick, containerId }: Prop
     };
   }, [handleMouseDown, active]);
 
-  return null;
+  return { ref };
 };

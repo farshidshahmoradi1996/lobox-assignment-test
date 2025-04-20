@@ -30,7 +30,7 @@ export const MultiSelectWrapper: React.FC<MultiSelectWrapperProps> = ({
 
   return (
     <div className={clsx(classes.wrapper, isOpen && classes.open)} onClick={onToggle}>
-      <div>
+      <div className={classes.selectedOptionsContainer}>
         {selectedValues?.map((chips) => (
           <MultiSelectChips
             key={chips}
@@ -38,13 +38,15 @@ export const MultiSelectWrapper: React.FC<MultiSelectWrapperProps> = ({
             onRemove={() => handleRemoveItem(chips)}
           />
         ))}
-        <input
-          placeholder={placeholder}
-          autoFocus={isOpen}
-          ref={inputRef}
-          value={inputValue}
-          onChange={(e) => onInputValueChange?.(e.currentTarget.value)}
-        />
+        <div className={classes.inputContainer}>
+          <input
+            placeholder={selectedValues.length === 0 ? placeholder : ''}
+            autoFocus={isOpen}
+            ref={inputRef}
+            value={inputValue}
+            onChange={(e) => onInputValueChange?.(e.currentTarget.value)}
+          />
+        </div>
       </div>
 
       <ChevronDownIcon />
