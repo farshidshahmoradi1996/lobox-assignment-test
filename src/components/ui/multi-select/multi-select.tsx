@@ -18,23 +18,21 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 
   const { ref: containerRef } = useElmOutsideClick({ active: isOpen, onOutsideClick: () => setIsOpen(false) });
 
-  const toggleOpen = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const filteredOptionsByInputValue = useMemo(() => filterOptionsBySearch(options, inputValue), [options, inputValue]);
-  const canAddItem = !!inputValue && filteredOptionsByInputValue?.length === 0;
-
-  const handleOnItemAdd = (value: string) => {
-    onItemAdd?.(value);
-    setInputValue('');
-  };
-
   useEffect(() => {
     // clear input on item selected
     setInputValue('');
   }, [selectedValues]);
 
+  const toggleOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
+  const handleOnItemAdd = (value: string) => {
+    onItemAdd?.(value);
+    setInputValue('');
+  };
+
+  const filteredOptionsByInputValue = useMemo(() => filterOptionsBySearch(options, inputValue), [options, inputValue]);
+  const canAddItem = !!inputValue && filteredOptionsByInputValue?.length === 0;
   return (
     <div className={classes.container} ref={containerRef}>
       <MultiSelectWrapper
