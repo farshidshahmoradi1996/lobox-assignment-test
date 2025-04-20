@@ -29,7 +29,6 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   const handleOnItemAdd = (value: string) => {
     onItemAdd?.(value);
     setInputValue('');
-    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -42,7 +41,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
         placeholder={placeholder}
         isOpen={isOpen}
         onToggle={toggleOpen}
-        options={filteredOptionsByInputValue}
+        options={options}
         selectedValues={selectedValues}
         onChange={onChange}
         inputValue={inputValue}

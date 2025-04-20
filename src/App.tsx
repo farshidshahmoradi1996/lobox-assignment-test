@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { OptionType, ValueType } from './components/ui/multi-select/@types';
 
 const DEFAULT_OPTIONS = [
-  { label: 'Option 1', value: 'option1' },
-  { label: 'Option 2', value: 'option2' },
-  { label: 'Option 3', value: 'option3' },
-  { label: 'Option 4', value: 'option4' },
-  { label: 'Option 5', value: 'option5' },
-  { label: 'Option 6', value: 'option6' }
+  { label: 'Education 🎓', value: 'Education' },
+  { label: 'Science 🔬', value: 'Science' },
+  { label: 'Art 🎭', value: 'Art' },
+  { label: 'Sport ⚽', value: 'Sport' },
+  { label: 'Games 🎮', value: 'Games' },
+  { label: 'Health 🏥', value: 'Health' }
 ];
 function App() {
   const [itemsAddedByUser, setItemsAddedByUser] = useState<OptionType[]>([]);
@@ -29,8 +29,8 @@ function App() {
       }}
     >
       <MultiSelect
-        placeholder="select ..."
-        options={[...DEFAULT_OPTIONS, ...itemsAddedByUser]}
+        placeholder="Select favorites"
+        options={[...itemsAddedByUser, ...DEFAULT_OPTIONS]}
         selectedValues={selectedValues}
         onChange={setSelectedValues}
         onItemAdd={handleAddItem}
